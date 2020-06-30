@@ -18,7 +18,7 @@
 <body>
     <div id="app">
         <header>
-            <div class="content">
+            <div class="header">
                 <nav>
                     <ul>
                         <li><router-link to="/"><i class="fa fa-home"></i></router-link></li>
@@ -27,12 +27,60 @@
                 </nav>
             </div>
         </header>
+        <div class="card" :id="id">
+            <img src="/static/images/mandag.jpeg" class="cardimg" alt="Avatar" style="width:100%">
+            <div class="overlay">
+                <div class="timelineheader">
+                    <img src="/static/images/hamicon2.png" class="hamicon" alt="menu">
+                    <h1 style="display: none">
+                            8   
+                            <div>
+                                <p>Monday</p>
+                                <p>Monday</p>
+                            </div> 
+                    </h1>
+                </div>
+                <h1 style="color: white">halla</h1>
+            </div>
+            <div class="timeline">
+                <div class="weekdocardcontainer right">
+                    <div class="content">
+                      <p class="weekdodesc">Lorem per, habeo iusto primis ea eam.</p>
+                    </div>
+                </div>
+                <div class="weekdocardcontainer right">
+                    <div class="content">
+                      <p class="weekdodesc">Lorem per, habeo iusto primis ea eam.</p>
+                    </div>
+                </div>
+                <div class="weekdocardcontainer right">
+                    <div class="content">
+                      <p class="weekdodesc">Lorem per, habeo iusto primis ea eam.</p>
+                    </div>
+                </div>
+                <div class="weekdocardcontainer right">
+                    <div class="content">
+                      <p class="weekdodesc">Lorem per, habeo iusto primis ea eam.</p>
+                    </div>
+                </div>
+                <div class="weekdocardcontainer right">
+                    <div class="content">
+                      <p class="weekdodesc">Lorem per, habeo iusto primis ea eam.</p>
+                    </div>
+                </div>
+                <div class="weekdocardcontainer right">
+                    <div class="content">
+                      <p class="weekdodesc">Lorem per, habeo iusto primis ea eam.</p>
+                    </div>
+                </div>
+                <div class="timelineline">
 
-        <div class="weekdocontainer">
-            <div class="timelineheader">  </div>
+                </div>
+            </div>
         </div>
 
-        <router-view></router-view>
+
+        <!-- <router-view></router-view> -->
     </div>
     
 

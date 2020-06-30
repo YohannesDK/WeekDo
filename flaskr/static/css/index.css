@@ -1,21 +1,64 @@
+.app{
+    height: 90vh;
+}
 .weekdocontainer{
     width: 100%; 
     background-color: #838383;
     display: grid;
     grid-template-rows: auto auto;
+    margin-bottom: 2%;
+    display: none;
 }
 
 .timelineheader{
     width: 100%;
-    height: 10vh;
+    height: 4vh;
+    /* background: #38415c; */
 }
 
+.timelineline{
+    content: '';
+    position: absolute;
+    width: 6px;
+    background: white;
+    top: 0;
+    bottom: 0;
+    left: 10%;
+    margin-left: -3px;
+    height: 100%;
+}
+
+.cardimg{
+    max-height: 21vh;
+}
+.cardcontainer{
+    display: flex;
+    justify-content: space-evenly;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    width: 100%;
+}
+.hamicon{
+    max-height: 3vh;
+    margin-left: 2%;
+    margin-top: 2%;
+}
 .card{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 14%;
+    width: 15%;
+    height: 40%;
+    margin-bottom: 1%;
+    position: relative;
 }
-
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    max-height: 21vh;
+    background: linear-gradient(to bottom,rgba(19, 19, 19, 0.24) 27%,rgba(29,29,27,.6));
+}
 .card:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
@@ -23,3 +66,160 @@
 .cardinnercontainer{
     padding: 2px 16px;
 }
+.cardinnercontainer2{
+    padding: 2px 16px;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    background: #38415c;
+    height: -moz-fit-content;
+    padding-bottom: 7%;
+    padding-top: 3%;
+  }
+  
+  /* The actual timeline (the vertical ruler) */
+  .timeline::after {
+    /* content: '';
+    position: absolute;
+    width: 6px;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    left: 10%;
+    margin-left: -3px; */
+  }
+  
+  /* Container around content */
+  .weekdocardcontainer {
+    padding: 3% 0 3% 39px;
+    position: relative;
+    background-color: inherit;
+    width: 60%;
+    
+  }
+  
+  /* The circles on the timeline */
+  .weekdocardcontainer::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: white;
+    border: 4px solid #FF9F55;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .weekdodesc{
+    margin-top: 3%;
+  }
+  
+  /* Place the container to the left */
+  .left {
+    left: 0;
+  }
+  
+  /* Place the container to the right */
+  .right {
+    left: 10%;
+  }
+  
+  /* Add arrows to the left container (pointing right) */
+  .left::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+  }
+  
+  /* Add arrows to the right container (pointing left) */
+  .right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+  
+  /* Fix the circle for containers on the right side */
+  .right::after {
+    left: -16px;
+  }
+  
+  /* The actual content */
+  .content {
+    padding: 1% 5%;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+    overflow: scroll;
+    scrollbar-width: none;
+    max-height: 7vh;
+    min-height: 6vh;
+  }
+  
+  /* Media queries - Responsive timeline on screens less than 600px wide */
+  @media screen and (max-width: 600px) {
+    
+    #app{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card{
+        width: 85%;
+        margin-bottom: 6%;
+        position: relative;
+    }
+    .cardimg{
+        max-height: 29vh;
+    }
+    /* Place the timelime to the left */
+    /* .timeline::after {
+    left: 31px;
+    } */
+    
+    /* Full-width containers */
+    /* .weekdocardcontainer {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+    } */
+    
+    /* Make sure that all arrows are pointing leftwards */
+    /* .weekdocardcontainer::before {
+    left: 60px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+    } */
+  
+    /* Make sure all circles are at the same spot */
+    /* .left::after, .right::after {
+    left: 15px;
+    } */
+    
+    /* Make all right containers behave like the left ones */
+    /* .right {
+    left: 0%;
+    } */
+  }

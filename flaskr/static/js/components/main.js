@@ -1,41 +1,32 @@
 let main = {
-    data() {
-        return {
-            weekdolist: []
-        }
+    data() { 
+        return{
+            weekdolist: {},
+        }       
+        
     },
     template: `
-        <main>
-            <h1> main component </h1>
-            
-            <week-do v-if="check_length" v-for "todo in weekdolist" 
-            :id="todo" 
+        <main class="cardcontainer">
+            <week-do v-if="check_length" v-for="(todo,index) in weekdolist"
             :todo="todo.todo"
             :date="todo.date"
             :by="todo.by"
-            :key="todo"
-            
+            :key="index"
+            :index="index"
             >
             </week-do>
         </main>
     `,
     methods: {
-        curr_weekdoes: function() {
-            console.log(weekdoes.all_weekdoes);
-            
-            // if (weekdoes.all_weekdoes !== undefined) {
-            //     this.weekdolist = weekdoes.all_weekdoes
-            //     console.log(this.weekdolist);
-                
-            // } else{
-            //     this.weekdolist = []
-            // }
-        },
         check_length: function() {
             return Object.keys(this.weekdolist).length > 0
         }
     },
-    created() {
-        this.weekdolist = weekdoes.all_weekdoes;
-    }
+    created: async function() {
+        let response = await fetch('/get_weekdoes');
+        if (response.status == 200) {
+            let result = await response.json();
+            this.weekdolist = result;
+        }
+    },
 }
