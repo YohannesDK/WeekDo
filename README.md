@@ -1,5 +1,5 @@
 # WeekDo
-Scheduler for each weak, with to do effect! Each sunday i will make my weakly schedule! 
+Scheduler for each weak, with todo effect! Each sunday i will make my weakly schedule! 
 
 ## What do we need?
     * Backend: Python
