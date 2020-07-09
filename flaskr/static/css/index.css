@@ -79,9 +79,10 @@
 .cardcontainer{
     display: flex;
     justify-content: space-evenly;
-    overflow-x: scroll;
-    scrollbar-width: none;
+    /* overflow-x: scroll; */
+    /* scrollbar-width: thin; */
     width: 100%;
+    flex-wrap: wrap;
 }
 .hamicon{
     max-height: 3vh;
@@ -100,6 +101,8 @@
     height: 27rem;
     margin-bottom: 1%;
     position: relative;
+    margin-right: 3%;
+    min-width: 20rem;
 }
 .overlay{
     position: absolute;
@@ -148,14 +151,14 @@
   
   /* Container around content */
   .weekdocardcontainer {
-    padding: 3% 0 3% 39px;
+    padding: 6% 0 3% 39px;
     position: relative;
     background-color: inherit;
     width: 60%;
     
   }
   .weekdodesc {
-	margin-top: 3%;
+	margin-top: 6%;
 	max-width: 71%;
 	margin-left: 9%;
 }
@@ -178,6 +181,13 @@
     visibility: hidden;
     transition: all ease-in-out 0s;
     z-index: 10;
+}
+.checkimg_clicked{
+    width: 100%;
+    visibility: visible !important;
+    transition: all ease-in-out 0s;
+    z-index: 10;
+
 }
   /* The circles on the timeline */
 /* .weekdocardcontainer::after {

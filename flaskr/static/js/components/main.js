@@ -10,6 +10,7 @@ let main = {
             <week-do v-if="check_length" v-for="(todo,index) in weekdolist"
             :todo="todo.todo"
             :date="todo.date"
+            :day="todo.day"
             :by="todo.by"
             :key="index"
             :index="index"
