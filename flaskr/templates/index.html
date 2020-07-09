@@ -17,77 +17,7 @@
 </head>
 <body>
     <div id="app">
-        <header>
-            <div class="header">
-                <nav>
-                    <ul>
-                        <li><router-link to="/"><i class="fa fa-home"></i></router-link></li>
-                        <li><router-link to="/get_weekdoes"><i class="fa fa-home"></i></router-link></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <div class="card">
-            <img src="/static/images/mandag.jpeg" class="cardimg" alt="Avatar" style="width:100%">
-            <div class="overlay">
-                <div class="timelineheader">
-                    <img src="/static/images/test1.png" class="hamicon" alt="menu">
-                    <div class="weekdo_day">
-                            <div class="weekdo_day_inner">
-                                <h1 class="number_day">8</h1>
-                                <div class="day_mount_year">
-                                    <h3 class="weekday">Monday</h3>
-                                    <span class="mounth_year_span">
-                                        <h4 class="mounth" >Februar</h4>
-                                        <h4 class="year">2015</h4>
-                                    </span>
-                                </div> 
-                            </div>
-                    </div>
-                </div>
-            </div>
-            <div class="timeline">
-                <div class="weekdocardcontainer right">
-                    <div class="all_weekdo_container">
-                        <h1 class="weekdotime">12:00</h1>
-                        <p class="weekdodesc">Lorem per, habeo iusto primis ea eam.</p>
-                    </div>
-                    <div class="circle"><img src="{{url_for('static', filename='images/checkarrow2.png')}}" alt="" class="checkimg" style="width:100%; visibility: hidden;"></div>
-                </div>
-                <div class="weekdocardcontainer right">
-                    <div class="all_weekdo_container">
-                        <h1 class="weekdotime" >12:00</h1>
-                        <p class="weekdodesc">Lorem per, habeo iusto primis ea eam.</p>
-                    </div>
-                    <div class="circle"><img src="{{url_for('static', filename='images/checkarrow2.png')}}" alt="" class="checkimg" style="width:100%; visibility: hidden;"></div>
-                </div>
-                <div class="weekdocardcontainer right">
-                    <div class="all_weekdo_container">
-                        <h1 class="weekdotime" >12:00</h1>
-                        <p class="weekdodesc">Lorem per, habeo iusto primis ea eam.</p>
-                    </div>
-                    <div class="circle"><img src="{{url_for('static', filename='images/checkarrow2.png')}}" alt="" class="checkimg" style="width:100%; visibility: hidden;"></div>
-                </div>
-                <div class="weekdocardcontainer right">
-                    <div class="all_weekdo_container">
-                        <h1 class="weekdotime" >12:00</h1>
-                        <p class="weekdodesc">Lorem per, habeo iusto primis ea eam.</p>
-                    </div>
-                    <div class="circle"><img src="{{url_for('static', filename='images/checkarrow2.png')}}" alt="" class="checkimg" style="width:100%; visibility: hidden;"></div>
-                </div>
-                <div class="weekdocardcontainer right">
-                    <div class="all_weekdo_container">
-                        <h1 class="weekdotime" >12:00</h1>
-                        <p class="weekdodesc">Lorem per, habeo iusto primis ea eam.</p>
-                    </div>
-                    <div class="circle"><img src="{{url_for('static', filename='images/checkarrow2.png')}}" alt="" class="checkimg" style="width:100%; visibility: hidden;"></div>
-                </div>
-                <div class="timelineline"></div>
-            </div>
-        </div>
-
-
-        <!-- <router-view></router-view> -->
+        <router-view></router-view>
     </div>
     
 

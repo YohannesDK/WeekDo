@@ -18,10 +18,10 @@ def set_weekdo():
 @app.route("/get_weekdoes")
 def get_weekdoes():
     d = {
-        0 : {"todo":'Ring mamma', "date":"06-13-2019", "by":"12:24"},
-        1 : {"todo":'Ring pappa', "date":"06-13-2019", "by":"12:22"},
-        2 : {"todo":'Ring fdhjka', "date":"06-13-2019", "by":"12:21"},
-        3 : {"todo":'Ring akdjaldk', "date":"06-13-2019", "by":"12:04"},
-        4 : {"todo":'Ring akjdalskj', "date":"06-13-2019", "by":"12:34"},
+        0 : {"todo":['Ring mamma', 'Lag 1', 'Lag 1'], "date":"06-13-2019","day":"6", "by":['12:21', '12:54', '13:00']},
+        1 : {"todo":['Ring pappa'], "date":"06-13-2019","day":"7", "by":["12:22"]},
+        2 : {"todo":['Ring fdhjka'], "date":"06-13-2019","day":"8", "by":["12:21"]},
+        3 : {"todo":['Ring akdjaldk'], "date":"06-13-2019","day":"9", "by":["12:04"]},
+        4 : {"todo":['Ring akjdalskj'], "date":"06-13-2019","day":"10", "by":["12:34"]}
     }
     return json.dumps(d)
