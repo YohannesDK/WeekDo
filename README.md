@@ -5,9 +5,13 @@ Scheduler for each weak, with todo effect! Each sunday i will make my weakly sch
    ```
       /WeekDo
          ├── flaskr/
+         │   ├── __init__.py
+         │   ├── database.db
+         │   ├── routes.py
+         │   ├── schema.sql
+         │   ├── templates/
+         │   │   |── index.html
          │   |── static/
-         │   |   ├── templates/
-         │   │   │   |── index.html
          │   │   ├── css/
          │   │   │   ├── style.css
          │   │   ├── js/
@@ -16,10 +20,12 @@ Scheduler for each weak, with todo effect! Each sunday i will make my weakly sch
          │   │   │   ├── components/
          │   │   │   │   ├── weekdocomponent.js
          │   │   │   │   ├── setweekdo.js
-         │   ├── __init__.py
-         │   ├── schema.sql
+         │   │   │   │   ├── main.js
          ├── venv/
-         └── setup.py
+         ├── config.py
+         ├── requirements.txt
+         ├── README.md
+         └── weekdo.py
    ```
 ## What do we need?
     * Backend: Python
