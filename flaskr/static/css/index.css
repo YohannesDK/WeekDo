@@ -112,6 +112,26 @@
     max-height: 21vh;
     background: linear-gradient(to bottom,rgba(19, 19, 19, 0.39) 27%,rgba(29, 29, 27, 0.8));
 }
+.add_btn{
+    background: #b31616;
+    width: 100%;
+    font-size: 2rem;
+    color: white;
+    padding: 2%;
+    border-radius: 50%;
+    max-width: 40px;
+    max-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    bottom: -13%;
+    right: 8%;
+}
+.add_btn:hover{
+    background: #fd0d0d;
+}
 .card:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }

@@ -35,6 +35,13 @@ Vue.component("week-do", {
                 tll.setAttribute("style", "height:" + tl_scrollheight.toString() + "px")
                 
             }
+        },
+        addTodo: function(){
+            // this.weekdo.push("halla")
+            // this.byy.push("12:02")
+            console.log("halla");
+            // this.extendTimeline()
+            
         }
     },
     template: `
@@ -57,6 +64,7 @@ Vue.component("week-do", {
                             </div>
                     </div>
                 </div>
+                <div class="add_btn" @click="addTodo()">+</div>
             </div>
 
             <div class="timeline">
