@@ -79,12 +79,19 @@ Vue.component("week-do", {
                     v-on:click="check_click($event)"
                     >
                     <img src="/static/images/checkarrow2.png" alt="" class="checkimg" style="width:100%; visibility: hidden;"></div>
+                    </div>
+                    <div class="timelineline"></div>
                 </div>
-                <div class="timelineline"></div>
-            </div>
+                <addInput></addInput>
         </div>
     `,
     mounted(){
         this.extendTimeline();
+    },
+    components: {
+        addInput
     }
 })
+
+import addInput from './addtodo'
+console.log(addInput);
