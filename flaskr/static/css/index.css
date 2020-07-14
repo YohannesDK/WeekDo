@@ -128,6 +128,7 @@
     height: 100%;
     bottom: -13%;
     right: 8%;
+    font-weight: bold;
 }
 .add_btn:hover{
     background: #fd0d0d;
@@ -156,7 +157,18 @@
     max-height: 16vh;
     overflow: scroll;
     scrollbar-width: none;
-  }
+    min-height: 16vh;
+}
+
+.add_new_todo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 130%;
+    position: relative;
+    right: 6%;
+}
   
   /* The actual timeline (the vertical ruler) */
   .timeline::after {
@@ -185,13 +197,26 @@
 }
 
 .add_input_field{
-    width: -moz-fit-content;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    width: 100%;
+    justify-content: flex-start;
 
+}
+.input_time{
+    margin-right: 3%;
+}
+.input_todo{
+    width: 65%;
+}
+.add_input_button{
+    width: 100%;
+    height: 25px;
+    position: relative;
+    right: 0.5%;
+}
 .circle{
     position: absolute;
     width: 20px;

@@ -1,4 +1,3 @@
-export { default as AddInput } from './addtodo'
 let main = {
     data() { 
         return{

@@ -2,12 +2,14 @@ Vue.component("week-do", {
     props: ["todo", "date", "day" , "by", "index"],
     data() {
         return {
-            weekdo: this.todo,
+            weekdoes: [],
             dato: this.date,
             dag: this.day,
-            byy: this.by,
             id: this.index,
-            b: undefined
+            b: undefined,
+            already_adding: false,
+            time: null,
+            newtodo: null
 
         }
     },
@@ -36,12 +38,29 @@ Vue.component("week-do", {
                 
             }
         },
+        waitforinputandadd: function() {
+            if (this.newtodo !== null && this.time !== null &&
+                this.newtodo !== '' && this.time !== '') {
+                this.$set(this.weekdoes[this.weekdoes.length - 1], 'show', true);
+                this.$set(this.weekdoes[this.weekdoes.length - 1], 'todo', this.newtodo);
+                this.$set(this.weekdoes[this.weekdoes.length - 1], 'byy', this.time);
+                this.extendTimeline()
+                this.already_adding = false;
+            }else{
+                alert("cannot add empty todo!")
+            }
+        },
         addTodo: function(){
-            // this.weekdo.push("halla")
-            // this.byy.push("12:02")
-            console.log("halla");
-            // this.extendTimeline()
-            
+            if (!this.already_adding) {
+                this.weekdoes.push({
+                    todo: null,
+                    byy: null,
+                    show: false
+                })
+                this.already_adding = true;
+            } else {
+                alert("Already adding one")
+            }
         }
     },
     template: `
@@ -68,30 +87,48 @@ Vue.component("week-do", {
             </div>
 
             <div class="timeline">
-                <div class="weekdocardcontainer right" v-for="(todo,index) in weekdo">
-                    <div class="all_weekdo_container">
-                        <h1 class="weekdotime">{{byy[index]}}</h1>
-                        <p class="weekdodesc">{{todo}}</p>
+                <div class="weekdocardcontainer right" v-for="(todo,index) in weekdoes" 
+                :key="index">
+                    <div class="all_weekdo_container" v-if="todo.show">
+                        <h1 class="weekdotime">{{todo.byy}}</h1>
+                        <p class="weekdodesc">{{todo.todo}}</p>
+                    </div>
+                    <div class="add_new_todo" v-if="!todo.show" > 
+                        <fieldset class="add_input_field" >
+                            <input type="time" class="input_time" v-model="time" required>
+                            <input type="text" class="input_todo" v-model="newtodo" required>
+                        </fieldset>
+                        <button
+                        class="add_input_button"  
+                        @click="waitforinputandadd()"
+                        > Add todo </button>
                     </div>
                     <div class="circle"
                     @mouseover="visible_unset($event)"
                     @mouseleave="visible_hidden($event)"
                     v-on:click="check_click($event)"
+                    v-if="todo.show"
                     >
                     <img src="/static/images/checkarrow2.png" alt="" class="checkimg" style="width:100%; visibility: hidden;"></div>
                     </div>
                     <div class="timelineline"></div>
                 </div>
-                <addInput></addInput>
         </div>
     `,
     mounted(){
         this.extendTimeline();
     },
-    components: {
-        addInput
-    }
-})
+    beforeMount() {
+        for (let i = 0; i < this.todo.length; i++) {
+            const ele = this.todo[i];
+            const by = this.by[i]
 
-import addInput from './addtodo'
-console.log(addInput);
+            this.weekdoes.push({
+                todo: ele,
+                byy: by,
+                show: true
+            })
+            
+        }
+    },
+})
