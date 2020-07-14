@@ -118,6 +118,7 @@ Vue.component("week-do", {
     mounted(){
         this.extendTimeline();
     },
+
     beforeMount() {
         for (let i = 0; i < this.todo.length; i++) {
             const ele = this.todo[i];
