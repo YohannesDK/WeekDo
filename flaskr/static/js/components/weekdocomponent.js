@@ -95,8 +95,12 @@ Vue.component("week-do", {
                     </div>
                     <div class="add_new_todo" v-if="!todo.show" > 
                         <fieldset class="add_input_field" >
-                            <input type="time" class="input_time" v-model="time" required>
-                            <input type="text" class="input_todo" v-model="newtodo" required>
+                            <input type="text" class="input_time" v-model="time" 
+                            placeholder="hh:mm"
+                            required>
+                            <input type="text" class="input_todo" v-model="newtodo" 
+                            placeholder="Todo"
+                            required>
                         </fieldset>
                         <button
                         class="add_input_button"  

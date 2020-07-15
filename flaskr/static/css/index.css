@@ -207,6 +207,7 @@
 }
 .input_time{
     margin-right: 3%;
+    max-width: 18%;
 }
 .input_todo{
     width: 65%;
@@ -216,6 +217,10 @@
     height: 25px;
     position: relative;
     right: 0.5%;
+    background: white;
+    border-width: thin;
+    border-radius: 6%;
+    border-color: #dddada;
 }
 .circle{
     position: absolute;
