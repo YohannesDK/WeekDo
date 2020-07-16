@@ -334,6 +334,15 @@
     align-items: center;
     /* top: -11%; */
   }
+
+.all_weekdo_container::-webkit-scrollbar {
+    display: none !important;
+    width: 0;
+}
+.timeline::-webkit-scrollbar {
+    display: none !important;
+    width: 0;
+}
   
   /* Media queries - Responsive timeline on screens less than 600px wide */
   @media screen and (max-width: 600px) {
