@@ -25,7 +25,23 @@ Vue.component("week-do", {
             }
         },
         check_click: function(e) {
-            e.currentTarget.childNodes[0].className = "checkimg_clicked";
+            let ele = e.currentTarget;
+            console.log(ele.childNodes[0]);
+            ele.childNodes[0].className = "checkimg_clicked";
+            console.log(ele.childNodes[0]);
+            let todo = ele.parentNode.children[0].children[1].innerHTML;
+
+            for (let i = 0; i < this.weekdoes.length; i++) {
+                const weekdo = this.weekdoes[i];
+                if (todo === weekdo.todo) {
+                    console.log(weekdo.todo);
+                    this.$delete(this.weekdoes, i)
+                    break;
+                }
+                
+            }
+
+                        
         },
         extendTimeline: function(){
             let tl_list = document.querySelectorAll(".timeline");
@@ -37,6 +53,9 @@ Vue.component("week-do", {
                 tll.setAttribute("style", "height:" + tl_scrollheight.toString() + "px")
                 
             }
+        },
+        checkinput: function*(){
+
         },
         waitforinputandadd: function() {
             if (this.newtodo !== null && this.time !== null &&
@@ -110,7 +129,7 @@ Vue.component("week-do", {
                     <div class="circle"
                     @mouseover="visible_unset($event)"
                     @mouseleave="visible_hidden($event)"
-                    v-on:click="check_click($event)"
+                    v-on:dblclick="check_click($event)"
                     v-if="todo.show"
                     >
                     <img src="/static/images/checkarrow2.png" alt="" class="checkimg" style="width:100%; visibility: hidden;"></div>

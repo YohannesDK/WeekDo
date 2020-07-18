@@ -5,6 +5,15 @@ import os
 import json
 
 
+
+
+@app.before_first_request
+def test():
+    a = 3
+    while a > 0:
+        print("\n", "running", "\n")
+        a -= 1
+
 @app.route('/')
 @app.route('/home')
 def index():
@@ -17,6 +26,7 @@ def set_weekdo():
 
 @app.route("/get_weekdoes")
 def get_weekdoes():
+        
     d = {
         0 : {"todo":['Ring mamma', 'Lag 1', 'Lag 1'], "date":"06-13-2019","day":"6", "by":['12:21', '12:54', '13:00']},
         1 : {"todo":['Ring pappa'], "date":"06-13-2019","day":"7", "by":["12:22"]},
