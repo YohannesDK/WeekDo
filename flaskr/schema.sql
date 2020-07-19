@@ -1,8 +1,16 @@
 DROP TABLE IF EXISTS weekdo;
+DROP TABLE IF EXISTS weekdo2;
 
 CREATE TABLE weekdo(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     todo TEXT NOT NULL,
-    date TEXT NOT NULL,
+    dato TEXT NOT NULL,
     timetocomplete TIMESTAMP NOT NULL
-)
+);
+
+CREATE TABLE weekdo2(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    todo TEXT NOT NULL,
+    dato TEXT NOT NULL,
+    timetocomplete TIMESTAMP NOT NULL
+);
