@@ -22,6 +22,6 @@ def get_weekdoes():
         1 : {"todo":['Ring pappa'], "date":"06-13-2019","day":"7", "by":["12:22"]},
         2 : {"todo":['Ring fdhjka'], "date":"06-13-2019","day":"8", "by":["12:21"]},
         3 : {"todo":['Ring akdjaldk'], "date":"06-13-2019","day":"9", "by":["12:04"]},
-        4 : {"todo":['Ring akjdalskj'], "date":"06-13-2019","day":"10", "by":["12:34"]}
+        4 : {"todo":[''], "date":"06-13-2019","day":"10", "by":[""]}
     }
     return json.dumps(d)
