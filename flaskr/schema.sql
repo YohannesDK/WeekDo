@@ -1,8 +1,9 @@
-DROP TABLE IF EXISTS [weekdo];
+-- DROP TABLE IF EXISTS [weekdo];
 
-CREATE TABLE [weekdo](
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE weekdo(
+    todo_id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
     todo TEXT NOT NULL,
-    [creation_time] DATETIME
+    test VARCHAR(10) NOT NULL,
+    creation_time DATETIME
 )
 
