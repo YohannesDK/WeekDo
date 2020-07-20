@@ -1,9 +1,16 @@
--- DROP TABLE IF EXISTS [weekdo];
+DROP TABLE IF EXISTS [dates];
 
-CREATE TABLE weekdo(
-    todo_id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
-    todo TEXT NOT NULL,
-    test VARCHAR(10) NOT NULL,
-    creation_time DATETIME
-)
+CREATE TABLE dates(
+    date_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    dato TEXT
+);
 
+DROP TABLE IF EXISTS [weekdoes];
+
+CREATE TABLE weekdoes(
+    todo_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    todo VARCHAR(255) NOT NULL,
+    timeToComplete TIME NOT NULL,
+    d_id INTEGER NOT NULL,
+    FOREIGN KEY (d_id) REFERENCES [dates](date_id)
+);

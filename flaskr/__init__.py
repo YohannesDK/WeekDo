@@ -25,13 +25,13 @@ def init_db():
             db.cursor().executescript(f.read())
         db.commit()
 
-def query_db(query, one=False):
+def query_db(query, args=() , one=False):
     db = get_db()
-    cursor = db.execute(query)
+    cursor = db.execute(query, args)
     rv = cursor.fetchall()
     cursor.close()
     db.commit()
-    return (rv[0] if rv else None) if one else rv
+    return (rv if rv else None) if one else rv
 
 
 @app.teardown_appcontext

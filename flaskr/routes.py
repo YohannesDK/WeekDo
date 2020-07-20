@@ -1,18 +1,35 @@
 from flask import render_template, flash, redirect, url_for, request
 from flaskr import app, query_db
-from datetime import datetime
+from datetime import datetime, timedelta, date
 import os
 import json
 
-
+days = {
+    0 : "mandag",
+    1 : "tirsdag",
+    2 : "onsdag",
+    3 : "torsdag",
+    4 : "fredag",
+    5 : "lørdag",
+    6 : "søndag"
+}
 
 
 @app.before_first_request
 def test():
-    a = 3
-    while a > 0:
-        print("\n", "running", "\n")
-        a -= 1
+    # query_db('DELETE FROM dates;', one=True)
+    # for day in days:
+    #     query_db('INSERT INTO dates (date_id, dato) VALUES (?,?);', (day, days[day]))
+
+    check_query = query_db('SELECT * FROM dates;', one=True)
+    if check_query != None:
+        for i in check_query:
+            print(i[0], i[1])
+    
+    print("\n")
+    dt = datetime.today()
+    for i in all_sundays(dt.year):
+        print(i)
 
 @app.route('/')
 @app.route('/home')
@@ -35,3 +52,11 @@ def get_weekdoes():
         4 : {"todo":['Ring akjdalskj'], "date":"06-13-2019","day":"10", "by":["12:34"]}
     }
     return json.dumps(d)
+
+
+def all_sundays(year):
+    d = date(year, 1, 1)                    # January 1st
+    d += timedelta(days = 6 - d.weekday())  # First Sunday
+    while d.year == year:
+      yield d
+      d += timedelta(days = 7)
