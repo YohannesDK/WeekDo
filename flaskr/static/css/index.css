@@ -230,26 +230,31 @@
     width: 20px;
     height: 20px;
     left: -17px;
-    background: white;
+    background: #FF9F55;
     border: 2px solid #FF9F55;
     /* top: 33px; */
     border-radius: 50%;
     z-index: 1;
     transform: translateX(24%);
-    top: 37px;
-}
-
-.checkimg{
-    width: 100%;
-    visibility: hidden;
+    top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: all ease-in-out 0s;
-    z-index: 10;
+}
+.checksvg{
+    visibility: visible;
+    width: 100%;
+    position: relative;
+    top: 0%;
+    fill: white;
+    left: 6%;
+    transform: scale(1.1);
+    transition: all ease-in-out 0s;
 }
 .checkimg_clicked{
-    width: 100%;
-    visibility: visible !important;
     transition: all ease-in-out 0s;
-    z-index: 10;
+    background: #17C132;
 
 }
   /* The circles on the timeline */

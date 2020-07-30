@@ -16,20 +16,25 @@ Vue.component("week-do", {
     },
     methods: {
         visible_unset: function(e){
-            if (e.currentTarget.childNodes[0].className !== "checkimg_clicked") {
-                e.currentTarget.childNodes[0].style.visibility = "unset";
+            if (e.currentTarget.classList[e.currentTarget.classList.length-1] !== "checkimg_clicked") {
+                e.currentTarget.style.background = "#17C132";
+                e.currentTarget.style.borderColor = "#FF9F55";
             }
         },
         visible_hidden: function(e){
-            if (e.currentTarget.childNodes[0].className !== "checkimg_clicked") {
-                e.currentTarget.childNodes[0].style.visibility = "hidden";
+            if (e.currentTarget.classList[e.currentTarget.classList.length-1] !== "checkimg_clicked") {
+                e.currentTarget.style.background = "#FF9F55";
+                e.currentTarget.style.borderColor = "#FF9F55";
             }
         },
         check_click: function(e) {
+            e.stop
             if (!this.already_adding) {
                 let ele = e.currentTarget;
-                ele.childNodes[0].className = "checkimg_clicked";
                 var delete_index = parseInt(ele.parentNode.attributes["todo_index"].value);
+                if (delete_index === parseInt(ele.attributes["circle_index"].value)) {
+                    ele.classList.add("checkimg_clicked");
+                }
                 this.finished_weekdoes.push(delete_index);
                 this.show_delete_button = true;
             }else{
@@ -149,12 +154,14 @@ Vue.component("week-do", {
 
                     </div>
                     <div class="circle"
+                    :circle_index="todo.id"
                     @mouseover="visible_unset($event)"
                     @mouseleave="visible_hidden($event)"
                     v-on:dblclick="check_click($event)"
                     v-if="todo.show"
                     >
-                    <img src="/static/images/checkarrow2.png" alt="" class="checkimg" style="width:100%; visibility: hidden;"></div>
+                    <svg class="checksvg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21.856 10.303c.086.554.144 1.118.144 1.697 0 6.075-4.925 11-11 11s-11-4.925-11-11 4.925-11 11-11c2.347 0 4.518.741 6.304 1.993l-1.422 1.457c-1.408-.913-3.082-1.45-4.882-1.45-4.962 0-9 4.038-9 9s4.038 9 9 9c4.894 0 8.879-3.928 8.99-8.795l1.866-1.902zm-.952-8.136l-9.404 9.639-3.843-3.614-3.095 3.098 6.938 6.71 12.5-12.737-3.096-3.096z"/></svg>
+                    </div>
                     </div>
                     <div class="timelineline"></div>
                 </div>
