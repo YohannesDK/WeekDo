@@ -1,12 +1,16 @@
 from flask import Flask , g
 from flask_cors import CORS
+from apscheduler.schedulers.background import BackgroundScheduler
 from config import Config
 import os
 
 import sqlite3
 
 app = Flask(__name__)
+
 app.config.from_object(Config)
+scheduler = BackgroundScheduler()
+
 CORS(app, resources={r'/*': {'origins': '*'}})
 
 def get_db():
