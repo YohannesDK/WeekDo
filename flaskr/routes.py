@@ -33,6 +33,8 @@ def index():
 
 @app.route("/set_weekdo", methods=["POST"])
 def set_weekdo():
+    req = request.get_json()
+    print(req)
     pass
 
 @app.route("/get_weekdoes")
