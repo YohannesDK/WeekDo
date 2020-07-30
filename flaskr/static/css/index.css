@@ -230,26 +230,31 @@
     width: 20px;
     height: 20px;
     left: -17px;
-    background: white;
+    background: #FF9F55;
     border: 2px solid #FF9F55;
     /* top: 33px; */
     border-radius: 50%;
     z-index: 1;
     transform: translateX(24%);
-    top: 37px;
-}
-
-.checkimg{
-    width: 100%;
-    visibility: hidden;
+    top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: all ease-in-out 0s;
-    z-index: 10;
+}
+.checksvg{
+    visibility: visible;
+    width: 100%;
+    position: relative;
+    top: 0%;
+    fill: white;
+    left: 6%;
+    transform: scale(1.1);
+    transition: all ease-in-out 0s;
 }
 .checkimg_clicked{
-    width: 100%;
-    visibility: visible !important;
     transition: all ease-in-out 0s;
-    z-index: 10;
+    background: #17C132;
 
 }
   /* The circles on the timeline */
@@ -344,9 +349,50 @@
     display: none !important;
     width: 0;
 }
+
+.remove_finished_todoes{
+    position: absolute;
+    right: 8.4%;
+    bottom: 0%;
+    min-height: 2%;
+    background: #e64747;
+    border-radius: 20%;
+    border: 1px solid white;
+    color: white;
+    max-width: 22%;
+    padding: 4%;
+    min-width: 17%;
+    max-height: 6%;
+    text-align: center;
+    line-height: 2px;
+    z-index: 1000;
+    /* display: none; */
+}
+
+.remove_finished_todoes p{
+    position: absolute;
+    left: -243%;
+    top: 6%;
+    color: black;
+    font-family: "sans-serif";
+    font-size: 0.8rem;
+    visibility: hidden;
+}
+
+/* smartphones, touchscreens */
+@media (hover: none) and (pointer: coarse) {
+    .remove_finished_todoes p{
+        visibility: visible;
+    }
+}/* stylus-based screens */
+@media (hover: none) and (pointer: fine) {
+    .remove_finished_todoes p{
+        visibility: visible;
+    }
+}
   
   /* Media queries - Responsive timeline on screens less than 600px wide */
-  @media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
     
     #app{
         display: flex;
@@ -356,41 +402,16 @@
     }
 
     .card{
-        width: 85%;
         margin-bottom: 6%;
         position: relative;
+        height: 23rem;
     }
     .cardimg{
-        max-height: 29vh;
+        max-height: 25vh;
     }
-    /* Place the timelime to the left */
-    /* .timeline::after {
-    left: 31px;
-    } */
-    
-    /* Full-width containers */
-    /* .weekdocardcontainer {
-    width: 100%;
-    padding-left: 70px;
-    padding-right: 25px;
-    } */
-    
-    /* Make sure that all arrows are pointing leftwards */
-    /* .weekdocardcontainer::before {
-    left: 60px;
-    border: medium solid white;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
-    } */
-  
-    /* Make sure all circles are at the same spot */
-    /* .left::after, .right::after {
-    left: 15px;
-    } */
-    
-    /* Make all right containers behave like the left ones */
-    /* .right {
-    left: 0%;
-    } */
-  }
+    .overlay{
+        max-height: 25vh;
+    }
+
+}
   

@@ -1,12 +1,16 @@
 from flask import Flask , g
 from flask_cors import CORS
+from apscheduler.schedulers.background import BackgroundScheduler
 from config import Config
 import os
 
 import sqlite3
 
 app = Flask(__name__)
+
 app.config.from_object(Config)
+scheduler = BackgroundScheduler()
+
 CORS(app, resources={r'/*': {'origins': '*'}})
 
 def get_db():
@@ -25,13 +29,13 @@ def init_db():
             db.cursor().executescript(f.read())
         db.commit()
 
-def query_db(query, one=False):
+def query_db(query, args=() , one=False):
     db = get_db()
-    cursor = db.execute(query)
+    cursor = db.execute(query, args)
     rv = cursor.fetchall()
     cursor.close()
     db.commit()
-    return (rv[0] if rv else None) if one else rv
+    return (rv if rv else None) if one else rv
 
 
 @app.teardown_appcontext
