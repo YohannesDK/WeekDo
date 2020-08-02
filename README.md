@@ -6,7 +6,6 @@ Scheduler for each weak, with todo effect! Each sunday i will make my weakly sch
       /WeekDo
          ├── flaskr/
          │   ├── __init__.py
-         │   ├── database.db
          │   ├── routes.py
          │   ├── schema.sql
          │   ├── templates/
@@ -22,6 +21,7 @@ Scheduler for each weak, with todo effect! Each sunday i will make my weakly sch
          │   │   │   │   ├── setweekdo.js
          │   │   │   │   ├── main.js
          ├── venv/
+         ├── database.db
          ├── config.py
          ├── requirements.txt
          ├── README.md
