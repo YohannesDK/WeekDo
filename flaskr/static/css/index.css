@@ -172,7 +172,7 @@
 }
   
   /* The actual timeline (the vertical ruler) */
-  .timeline::after {
+  /* .timeline::after {
     /* content: '';
     position: absolute;
     width: 6px;
@@ -180,8 +180,9 @@
     top: 0;
     bottom: 0;
     left: 10%;
-    margin-left: -3px; */
-  }
+    margin-left: -3px; 
+  } 
+  */
   
   /* Container around content */
   .weekdocardcontainer {

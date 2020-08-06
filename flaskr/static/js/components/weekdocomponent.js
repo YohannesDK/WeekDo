@@ -125,7 +125,7 @@ Vue.component("week-do", {
                             </div>
                     </div>
                 </div>
-                <div class="add_btn" @click="addTodo()">+</div>
+                <div class="add_btn" @click="addTodo()"><h1>+</h1></div>
             </div>
 
             <div class="timeline">
