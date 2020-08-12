@@ -12,6 +12,8 @@ let main = {
             :date="todo.date"
             :day="todo.day"
             :by="todo.by"
+            :done="todo.done"
+            :idee="todo.id"
             :key="index"
             :index="index"
             >

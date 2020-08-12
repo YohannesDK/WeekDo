@@ -1,5 +1,5 @@
 Vue.component("week-do", {
-    props: ["todo", "date", "day" , "by", "index"],
+    props: ["todo", "date", "day" , "done", "idee", "by", "index"],
     data() {
         return {
             weekdoes: [],
@@ -7,11 +7,12 @@ Vue.component("week-do", {
             dato: this.date,
             dag: this.day,
             id: this.index,
+            ide: this.idee,
+            donee: this.done,
             already_adding: false,
             show_delete_button: false,
             time: null,
             newtodo: null
-
         }
     },
     methods: {
@@ -28,7 +29,6 @@ Vue.component("week-do", {
             }
         },
         check_click: function(e) {
-            e.stop
             if (!this.already_adding) {
                 let ele = e.currentTarget;
                 var delete_index = parseInt(ele.parentNode.attributes["todo_index"].value);
@@ -84,6 +84,18 @@ Vue.component("week-do", {
                             this.$set(this.weekdoes[this.weekdoes.length - 1], 'id', this.weekdoes.length);
                             this.extendTimeline()
                             this.already_adding = false;
+                            
+                            fetch("/set_weekdo",{
+                                method: "POST",
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    "new_todo" : this.newtodo,
+                                    "new_byy" : this.time
+                                })
+                            })
                     }else{
                         alert("You need to have right time format, hh:mm !")
                     }
@@ -192,5 +204,7 @@ Vue.component("week-do", {
             })
             
         }
+        this.dato = new Date(this.date)
+        console.log(this.dato);
     },
 })

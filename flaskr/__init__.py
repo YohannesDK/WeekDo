@@ -1,17 +1,52 @@
 from flask import Flask , g
 from flask_cors import CORS
-from apscheduler.schedulers.background import BackgroundScheduler
 from config import Config
+from datetime import datetime, timedelta, date, time
 import os
 
 import sqlite3
 
 app = Flask(__name__)
-
 app.config.from_object(Config)
-scheduler = BackgroundScheduler()
 
-CORS(app, resources={r'/*': {'origins': '*'}})
+def init_year_and_sundays():
+    set_year()
+    if len(app.config['ALL_SUNDAYS']) == 0:
+        for sunday in all_sundays(int(app.config["YEAR"])):
+            app.config['ALL_SUNDAYS'].append(sunday)
+    #region hidethis
+    # print(app.config["WEEKDO_DEFAULT"])
+    # query_db('DELETE FROM dates;', one=True)
+    # for day in days:
+    #     query_db('INSERT INTO dates (date_id, dato) VALUES (?,?);', (day, days[day]))
+
+    # check_query = query_db('SELECT * FROM dates;', one=True)
+    # print(check_query)
+    # if check_query != None:
+    #     for i in check_query:
+    #         print(i[0], i[1], "her")
+    
+    # print("\n")
+    # dt = datetime.today()
+    # for i in all_sundays(dt.year):
+    #     print(i)
+    #endregion 
+
+def all_sundays(year):
+    d = date(year, 1, 1)                    # January 1st
+    d += timedelta(days = 6 - d.weekday())  # First Sunday
+    while d.year == year:
+      yield d
+      d += timedelta(days = 7)
+
+def set_year():
+    if app.config['YEAR'] == None:
+        app.config['YEAR'] = str(date.today().year)
+    elif int(app.config['YEAR']) < date.today().year:
+        app.config['YEAR'] = str(date.today().year)
+        app.config['ALL_SUNDAYS'] = []
+
+# CORS(app, resources={r'/*': {'origins': '*'}})
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -47,5 +82,8 @@ def close_connection(exception):
 # initialize db if it does not exist
 if not os.path.exists(app.config['DATABASE']):
     init_db()
+
+if app.config['YEAR'] == None:
+    init_year_and_sundays()
 
 from flaskr import routes

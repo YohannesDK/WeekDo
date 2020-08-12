@@ -5,25 +5,34 @@ from datetime import datetime, timedelta, date
 import os
 import json
 
-app.config.from_object(Config)
+days = {
+    0: 'man',
+    1: 'tirs',
+    2: 'ons',
+    3: 'tors',
+    4: 'fre',
+    5: 'lør',
+    6: "søn"
+}
 
 @app.before_first_request
-def test():
-    print(app.config["WEEKDO_DEFAULT"])
-    # query_db('DELETE FROM dates;', one=True)
+def testing():
     # for day in days:
-    #     query_db('INSERT INTO dates (date_id, dato) VALUES (?,?);', (day, days[day]))
+    # query_db('INSERT INTO dates (dato) VALUES (?);', (days[0],))
+    # query_db('INSERT INTO weekdoes (todo, timeToComplete, d_id, done) VALUES (?,?,?,?);', ('ring mamma', '12:11',0,0))
+    # weekdoes = query_db('SELECT * FROM weekdoes')
+    # query_db('DELETE FROM weekdoes')
 
     # check_query = query_db('SELECT * FROM dates;', one=True)
-    # print(check_query)
     # if check_query != None:
     #     for i in check_query:
-    #         print(i[0], i[1], "her")
-    
+    #         print(i['date_id'], i['dato'] )
+    # else:
+    #     print(check_query)
+
     # print("\n")
-    # dt = datetime.today()
-    # for i in all_sundays(dt.year):
-    #     print(i)
+    # query_db('DELETE FROM dates;', one=True)
+    pass
 
 @app.route('/')
 @app.route('/home')
@@ -33,29 +42,28 @@ def index():
 
 @app.route("/set_weekdo", methods=["POST"])
 def set_weekdo():
-    req = request.get_json()
-    print(req)
-    pass
+    if request.method == 'POST':
+        print("Method is post")
+        req = request.get_json()
+
+        print("\n")
+        print(req)
+        print("\n")
+        # print(req['new_todo'], req['new_byy'])
+        # query_db('INSERT INTO weekdoes (todo, timeToComplete, d_id, done) VALUES (?,?,?,?);', req[""])
+    else:
+        print("Something went wrong")
+    return redirect("/get_weekdoes")
 
 @app.route("/get_weekdoes")
 def get_weekdoes():
+    # print(app.config["ALL_SUNDAYS"])
+    # print(app.config["DELETE_TIME"])
+    weekdoes = query_db('SELECT * FROM weekdoes')
+    print("\n")
+    print(weekdoes)
+    # for i in weekdoes:
+    #     print(i['todo_id'], i['todo'],i['todo'], i['timeTocomplete'], i['done'] == True)
+    # print("\n")
 
-        
-    d = {
-        0 : {"todo":[], "date":"","day":"Monday", "by":[]},
-        1 : {"todo":[], "date":"","day":"Tuesday", "by":[]},
-        2 : {"todo":[], "date":"","day":"Wednesday", "by":[]},
-        3 : {"todo":[], "date":"","day":"Thursday", "by":[]},
-        4 : {"todo":[], "date":"","day":"Friday", "by":[]},
-        5 : {"todo":[], "date":"","day":"Saturday", "by":[]},
-        6 : {"todo":[], "date":"","day":"Sunday", "by":[]},
-    }
-    return json.dumps(d)
-
-
-def all_sundays(year):
-    d = date(year, 1, 1)                    # January 1st
-    d += timedelta(days = 6 - d.weekday())  # First Sunday
-    while d.year == year:
-      yield d
-      d += timedelta(days = 7)
+    return json.dumps(app.config['WEEKDO_DEFAULT'])

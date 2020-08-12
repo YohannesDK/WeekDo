@@ -12,5 +12,6 @@ CREATE TABLE weekdoes(
     todo VARCHAR(255) NOT NULL,
     timeToComplete TIME NOT NULL,
     d_id INTEGER NOT NULL,
+    done INTEGER DEFAULT 0 NOT NULL,
     FOREIGN KEY (d_id) REFERENCES [dates](date_id)
 );
