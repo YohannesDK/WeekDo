@@ -1,3 +1,6 @@
+$(document).ready(function() {
+    $("#MyModal").modal();
+});
 let router = new VueRouter({
    routes: [
        {path: '/', component: main},

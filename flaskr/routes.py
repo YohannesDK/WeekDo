@@ -61,6 +61,16 @@ def set_weekdo():
         print("Something went wrong")
     return redirect("/get_weekdoes")
 
+@app.route("/check_password", methods=["POST"])
+def check_password():
+    if request.method == "POST":
+        req = request.get_json()
+        if req['password'] == app.config["PASSWORD"]:
+            return json.dumps(True)
+        else:
+            return json.dumps(False)
+
+
 @app.route("/get_weekdoes")
 def get_weekdoes():
     weekdoes = query_db('SELECT * FROM weekdoes')

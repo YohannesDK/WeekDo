@@ -11,11 +11,13 @@ body{
     width: 100%;
     display: flex;
     justify-content: center;
+    /* margin-bottom: 4%; */
 }
-
+.modal_container{
+    width: 100%;
+}
 .app{
     height: 90vh;
-    margin-top: 4%;
 }
 .weekdocontainer{
     width: 100%; 

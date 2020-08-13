@@ -10,6 +10,7 @@ class Config(object):
         5 : {"todo":[], "date":"","day":"Saturday", "by":[], "done": [], "ids":[]},
         6 : {"todo":[], "date":"","day":"Sunday", "by":[], "done": [], "ids":[]},
     }
+    PASSWORD = "yoyoweekdo98"
     YEAR = None
     ALL_SUNDAYS = []
     WEEKDATES = []
