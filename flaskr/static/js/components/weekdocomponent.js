@@ -1,17 +1,20 @@
 Vue.component("week-do", {
-    props: ["todo", "date", "day" , "by", "index"],
+    props: ["todo", "date", "day" , "done", "idee", "by", "index"],
     data() {
         return {
             weekdoes: [],
             finished_weekdoes: [],
             dato: this.date,
+            year: undefined,
+            mounth: undefined,
+            dayy: undefined,
             dag: this.day,
             id: this.index,
+            donee: this.done,
             already_adding: false,
             show_delete_button: false,
             time: null,
             newtodo: null
-
         }
     },
     methods: {
@@ -28,7 +31,6 @@ Vue.component("week-do", {
             }
         },
         check_click: function(e) {
-            e.stop
             if (!this.already_adding) {
                 let ele = e.currentTarget;
                 var delete_index = parseInt(ele.parentNode.attributes["todo_index"].value);
@@ -84,6 +86,20 @@ Vue.component("week-do", {
                             this.$set(this.weekdoes[this.weekdoes.length - 1], 'id', this.weekdoes.length);
                             this.extendTimeline()
                             this.already_adding = false;
+                            console.log(this.date);
+                            fetch("/set_weekdo",{
+                                method: "POST",
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    "new_todo" : this.newtodo,
+                                    "new_byy" : this.time,
+                                    "dato": this.date,
+                                    "card_id": this.index
+                                })
+                            })
                     }else{
                         alert("You need to have right time format, hh:mm !")
                     }
@@ -114,12 +130,12 @@ Vue.component("week-do", {
                     <img src="/static/images/test1.png" class="hamicon" alt="menu">
                     <div class="weekdo_day">
                             <div class="weekdo_day_inner">
-                                <h1 class="number_day">10</h1>
+                                <h1 class="number_day">{{dayy}}</h1>
                                 <div class="day_mount_year">
                                     <h3 class="weekday">{{dag}}</h3>
                                     <span class="mounth_year_span">
-                                        <h4 class="mounth" >Februar</h4>
-                                        <h4 class="year">2015</h4>
+                                        <h4 class="mounth" >{{mounth}}</h4>
+                                        <h4 class="year">{{year}}</h4>
                                     </span>
                                 </div> 
                             </div>
@@ -183,14 +199,22 @@ Vue.component("week-do", {
         for (let i = 0; i < this.todo.length; i++) {
             const ele = this.todo[i];
             const by = this.by[i]
+            const ideeee = this.idee[i]
 
             this.weekdoes.push({
                 todo: ele,
                 byy: by,
                 show: true,
-                id: i
+                id: i,
+                ide: ideeee,
             })
             
         }
+        this.dato = new Date(this.date)
+        const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'long', day: '2-digit' }) 
+        const [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat .formatToParts(this.dato)
+        this.year = year
+        this.mounth = month
+        this.dayy = day
     },
 })

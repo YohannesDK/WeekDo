@@ -9,8 +9,10 @@ DROP TABLE IF EXISTS [weekdoes];
 
 CREATE TABLE weekdoes(
     todo_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    todo VARCHAR(255) NOT NULL,
-    timeToComplete TIME NOT NULL,
+    todo TEXT NOT NULL,
+    timeToComplete TEXT NOT NULL,
     d_id INTEGER NOT NULL,
+    card_id INTEGER NOT NULL,
+    done INTEGER DEFAULT 0 NOT NULL,
     FOREIGN KEY (d_id) REFERENCES [dates](date_id)
 );

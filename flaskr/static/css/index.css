@@ -1,3 +1,21 @@
+*, ::after, ::before {
+	box-sizing: unset;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btncountainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* margin-bottom: 4%; */
+}
+.modal_container{
+    width: 100%;
+}
 .app{
     height: 90vh;
 }
@@ -9,14 +27,11 @@
     margin-bottom: 2%;
     display: none;
 }
-
 .timelineheader{
     width: 100%;
     height: 4vh;
-    /* background: #38415c; */
     background: #222;
 }
-
 .weekdo_day{
     width: 100%;
     height: 17vh;
@@ -43,9 +58,7 @@
     margin-left: 5%;
     padding: 4% 3%;
 }
-
 .weekday{
-    font-size: 2rem;
     font-size: 2rem;
     margin: 0;
     font-weight: lighter;
@@ -56,6 +69,7 @@
 }
 .mounth_year_span h4{
     margin: 0;
+    font-size: 1.3rem;
 }
 .year{
     padding-left: 4%;
@@ -72,7 +86,6 @@
     margin-left: -3px;
     height: 100%;
 }
-
 .cardimg{
     max-height: 21vh;
 }
@@ -81,8 +94,9 @@
     justify-content: space-evenly;
     /* overflow-x: scroll; */
     /* scrollbar-width: thin; */
-    width: 100%;
+    width: 75%;
     flex-wrap: wrap;
+    margin: auto;
 }
 .hamicon{
     max-height: 3vh;
@@ -129,6 +143,7 @@
     bottom: -13%;
     right: 8%;
     font-weight: bold;
+    box-sizing: unset;
 }
 .add_btn:hover{
     background: #e87f2e;
@@ -159,6 +174,7 @@
     overflow: scroll;
     scrollbar-width: none;
     min-height: 16vh;
+    width: 90%;
 }
 
 .add_new_todo{
@@ -166,30 +182,17 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 130%;
+    width: 100%;
     position: relative;
     right: 6%;
 }
-  
-  /* The actual timeline (the vertical ruler) */
-  /* .timeline::after {
-    /* content: '';
-    position: absolute;
-    width: 6px;
-    background-color: white;
-    top: 0;
-    bottom: 0;
-    left: 10%;
-    margin-left: -3px; 
-  } 
-  */
   
   /* Container around content */
   .weekdocardcontainer {
     padding: 6% 0 3% 39px;
     position: relative;
     background-color: inherit;
-    width: 60%;
+    width: 80%;
     
   }
   .weekdodesc {
@@ -203,20 +206,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    justify-content: flex-start;
+    width: 97%;
 
 }
 .input_time{
     margin-right: 3%;
-    max-width: 18%;
+    max-width: 24%;
     text-align: center;
 }
 .input_todo{
     width: 73%;
 }
 .add_input_button{
-    width: 100%;
+    width: 96%;
     height: 25px;
     position: relative;
     right: 0.5%;
@@ -224,6 +226,7 @@
     border-width: thin;
     border-radius: 6%;
     border-color: #dddada;
+    margin-left: 1%;
     
 }
 .circle{
@@ -258,29 +261,10 @@
     background: #17C132;
 
 }
-  /* The circles on the timeline */
-/* .weekdocardcontainer::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    right: 57px;
-    background-color: white;
-    border: 2px solid #FF9F55;
-    top: 33px;
-    border-radius: 50%;
-    z-index: 1;
-    transform: translateX(24%);
-}
-
-.weekdocardcontainer:hover::after{
-    background: lightgreen;
-} */
-
-
 .weekdotime {
 	font-size: medium;
-	max-width: 55px;
+    max-width: 55px;
+    margin-bottom: 0;
 }
   
   /* Place the container to the left */
@@ -307,20 +291,6 @@
     border-color: transparent transparent transparent white;
   }
   
-  /* Add arrows to the right container (pointing left) */
-  /* .right::before {
-    content: " ";
-    height: 0;
-    position: absolute;
-    top: 22px;
-    width: 0;
-    z-index: 1;
-    left: 30px;
-    border: medium solid white;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
-  } */
-  
   /* Fix the circle for containers on the right side */
   .right::after {
     left: -16px;
@@ -336,7 +306,7 @@
     max-height: 7vh;
     min-height: 6vh;
     left: -12%;
-    width: 130%;
+    width: 100%;
     display: flex;
     align-items: center;
     /* top: -11%; */
@@ -373,7 +343,7 @@
 .remove_finished_todoes p{
     position: absolute;
     left: -243%;
-    top: 6%;
+    top: 56%;
     color: black;
     font-family: "sans-serif";
     font-size: 0.8rem;
