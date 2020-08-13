@@ -1,8 +1,21 @@
 *, ::after, ::before {
 	box-sizing: unset;
 }
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btncountainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .app{
     height: 90vh;
+    margin-top: 4%;
 }
 .weekdocontainer{
     width: 100%; 
@@ -12,13 +25,11 @@
     margin-bottom: 2%;
     display: none;
 }
-
 .timelineheader{
     width: 100%;
     height: 4vh;
     background: #222;
 }
-
 .weekdo_day{
     width: 100%;
     height: 17vh;
@@ -45,9 +56,7 @@
     margin-left: 5%;
     padding: 4% 3%;
 }
-
 .weekday{
-    font-size: 2rem;
     font-size: 2rem;
     margin: 0;
     font-weight: lighter;
@@ -58,6 +67,7 @@
 }
 .mounth_year_span h4{
     margin: 0;
+    font-size: 1.3rem;
 }
 .year{
     padding-left: 4%;
@@ -74,7 +84,6 @@
     margin-left: -3px;
     height: 100%;
 }
-
 .cardimg{
     max-height: 21vh;
 }
@@ -83,8 +92,9 @@
     justify-content: space-evenly;
     /* overflow-x: scroll; */
     /* scrollbar-width: thin; */
-    width: 100%;
+    width: 75%;
     flex-wrap: wrap;
+    margin: auto;
 }
 .hamicon{
     max-height: 3vh;
