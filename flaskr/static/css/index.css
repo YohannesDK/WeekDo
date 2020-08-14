@@ -13,7 +13,11 @@ body{
     justify-content: center;
     /* margin-bottom: 4%; */
 }
+
 .modal_container{
+    width: 100%;
+}
+.yoyoimg{
     width: 100%;
 }
 .app{
@@ -55,13 +59,15 @@ body{
 .day_mount_year{
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
     padding: 4% 3%;
 }
 .weekday{
     font-size: 2rem;
     margin: 0;
     font-weight: lighter;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
 }
 .mounth_year_span{
     display: inline-flex;
@@ -70,9 +76,14 @@ body{
 .mounth_year_span h4{
     margin: 0;
     font-size: 1.3rem;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
 }
 .year{
     padding-left: 4%;
+    width: 50% !important;
+    
 }
 
 .timelineline{

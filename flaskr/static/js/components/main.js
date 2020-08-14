@@ -21,7 +21,7 @@ let main = {
                 
                         <!--Header-->
                         <div class="modal-header">
-                        <img src="/static/images/img_avatar.png" alt="avatar" class="rounded-circle img-responsive">
+                        <img src="/static/images/img_avatar.png" alt="avatar" class="rounded-circle img-responsive yoyoimg">
                         </div>
                         <!--Body-->
                         <div class="modal-body text-center mb-1">
