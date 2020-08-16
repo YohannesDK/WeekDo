@@ -108,16 +108,20 @@ Vue.component("week-do", {
             }
         },
         addTodo: function(){
-            if (!this.already_adding) {
-                this.weekdoes.push({
-                    todo: null,
-                    byy: null,
-                    show: false,
-                    id: this.weekdoes.length
-                })
-                this.already_adding = true;
-            } else {
-                alert("Already adding one")
+            if (this.$parent.last_time_entered === false || this.$parent.last_time_entered === undefined) {
+                this.$parent.check_last_password_entered("add");
+            }else if(this.$parent.last_time_entered === true){
+                if (!this.already_adding) {
+                    this.weekdoes.push({
+                        todo: null,
+                        byy: null,
+                        show: false,
+                        id: this.weekdoes.length
+                    })
+                    this.already_adding = true;
+                } else {
+                    alert("Already adding one")
+                }
             }
         }
     },
@@ -141,7 +145,13 @@ Vue.component("week-do", {
                             </div>
                     </div>
                 </div>
-                <div class="add_btn" @click="addTodo()"><h1>+</h1></div>
+                <div class="add_btn" @click="addTodo()" 
+                v-if="this.$parent.last_time_entered === true"
+                ><h1>+</h1></div>
+
+                <div class="add_btn" @click="addTodo()" data-toggle="modal" data-target="#modalLoginAvatar"
+                v-if="this.$parent.last_time_entered === false || this.$parent.last_time_entered === undefined"
+                ><h1>+</h1></div>
             </div>
 
             <div class="timeline">

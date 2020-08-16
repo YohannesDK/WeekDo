@@ -18,23 +18,6 @@ days = {
 
 @app.before_first_request
 def testing():
-    # printandsee()
-    # for day in days:
-    # query_db('INSERT INTO dates (dato) VALUES (?);', (days[0],))
-    # query_db('INSERT INTO weekdoes (todo, timeToComplete, d_id, done) VALUES (?,?,?,?);', ('ring mamma', '12:11',0,0))
-    # weekdoes = query_db('SELECT * FROM weekdoes')
-    # query_db('DELETE FROM dates')
-    # query_db('DELETE FROM weekdoes')
-
-    # check_query = query_db('SELECT * FROM dates;', one=True)
-    # if check_query != None:
-    #     for i in check_query:
-    #         print(i['date_id'], i['dato'] )
-    # else:
-    #     print(check_query)
-
-    # print("\n")
-    # query_db('DELETE FROM dates;', one=True)
     pass
 
 @app.route('/')
@@ -56,7 +39,6 @@ def set_weekdo():
         print("\n")
         print(req)
         print("\n")
-        # print(req['new_todo'], req['new_byy'])
     else:
         print("Something went wrong")
     return redirect("/get_weekdoes")
@@ -70,19 +52,24 @@ def check_password():
         else:
             return json.dumps(False)
 
+@app.route("/check_last_entered", methods=["POST"])
+def check_last_entered():
+    if request.method == "POST":
+        if app.config["PASSWORD_ENTERED"]:
+            app.config["PASSWORD_ENTERED"] = not app.config["PASSWORD_ENTERED"]
+            return json.dumps(True)
+        else:
+            app.config["PASSWORD_ENTERED"] = not app.config["PASSWORD_ENTERED"]
+            return json.dumps(False)
+
+@app.route("/password_entered_default")
+def set_password_entered_to_false():
+    app.config['PASSWORD_ENTERED'] = False
+    print("yez boyy")
 
 @app.route("/get_weekdoes")
 def get_weekdoes():
     weekdoes = query_db('SELECT * FROM weekdoes')
-    # print("\n")
-    # print(weekdoes)
-    # print("\n")
-    # pp = pprint.PrettyPrinter(indent=4)
-    # pp.pprint(app.config['WEEKDO_DEFAULT'])
-    # print("\n")
-    # pp.pprint(get_all_days_of_week())
-    # print("\n")
-
     empty_weekdo_default()
     get_all_days_of_week()
     clear_all_and_update()

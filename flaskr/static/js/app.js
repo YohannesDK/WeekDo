@@ -7,6 +7,7 @@ let router = new VueRouter({
        {path: '/set_weekdo', redirect: '/'},
        {path: '/get_weekdoes', redirect: '/'},
        {path: '/clear_all', redirect: '/'},
+       {path: '/password_entered_default'}
    ] 
 })
 
