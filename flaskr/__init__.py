@@ -52,7 +52,7 @@ def get_db():
     db = getattr(g, '_database', None)
     
     if db is None:
-        db = g._database = sqlite3.connect(app.config['DATABASE_URL'])
+        db = g._database = sqlite3.connect(app.config['DATABASE'])
     
     db.row_factory = sqlite3.Row
     return db
@@ -80,7 +80,7 @@ def close_connection(exception):
         db.close()
 
 # initialize db if it does not exist
-if not os.path.exists(app.config['DATABASE_URL']):
+if not os.path.exists(app.config['DATABASE']):
     init_db()
 
 if app.config['YEAR'] == None:

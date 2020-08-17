@@ -1,7 +1,8 @@
 import os
 from datetime import time
 class Config(object):
-    DATABASE_URL = os.environ.get('DATABASE_URL')
+    DATABASE = 'database.db'
+    DATABASE_URL="sqlite:///database.db"
     WEEKDO_DEFAULT = {
         0 : {"todo":[], "date":"","day":"Monday", "by":[], "done": [], "ids":[]},
         1 : {"todo":[], "date":"","day":"Tuesday", "by":[],"done": [], "ids":[]},
