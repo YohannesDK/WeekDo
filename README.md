@@ -18,7 +18,6 @@ Scheduler for each weak, with todo effect! Each sunday i will make my weakly sch
          │   │   │   ├── weekdo.js 
          │   │   │   ├── components/
          │   │   │   │   ├── weekdocomponent.js
-         │   │   │   │   ├── setweekdo.js
          │   │   │   │   ├── main.js
          ├── venv/
          ├── database.db
