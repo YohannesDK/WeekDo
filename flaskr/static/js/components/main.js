@@ -11,6 +11,30 @@ let main = {
     },
     template: `
         <main class="cardcontainer">
+           
+            <div class="timer">
+                <div class="timer-inner">
+                  <div>
+                    <span class="hours">00</span>
+                    <div class="smalltext">hours</div>
+                  </div>
+
+                  <div>
+                    <span class="minutes">00</span>
+                    <div class="smalltext">min.</div>              
+                  </div>
+
+                  <div>
+                    <span class="seconds">00</span>         
+                    <div class="smalltext">sec.</div>
+                  </div>
+                </div>
+
+                <button type="button" class="btn btn-success">Start</button>
+                <button type="button" class="btn btn-light">Reset</button>
+                <button type="button" class="btn btn-danger">Stop</button> 
+            </div>
+            
             <div class="btncountainer">
                 <button type="button" class="btn btn-light clearbtn" 
                 data-toggle="modal" data-target="#modalLoginAvatar"

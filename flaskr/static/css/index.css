@@ -7,6 +7,54 @@ body{
     justify-content: center;
 }
 
+
+.timer{
+  position: fixed;
+  top: 38%;
+  left: 2%;
+  width: 13%;
+  height: 22%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-inner{
+  width: 100%;
+  height:38%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: white;
+}
+
+.timer-inner > div{
+	padding: 10px;
+	border-radius: 3px;
+	background: #e87f2e;
+	display: flex;
+	flex-direction: column;
+	width: 18%;
+	align-items: center;
+	height: 70%;	
+}
+
+.timer-inner div > span {
+	padding: 15px;
+	border-radius: 3px;
+	background: #222;
+	display: inline-block;
+	width: 28%;
+	height: 10%;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  font-size: 1.4em;
+}
+.btn{
+  width: 30%;
+  margin-top: 1%;
+}
 .btncountainer{
     width: 100%;
     display: flex;
