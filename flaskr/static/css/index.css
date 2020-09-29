@@ -55,6 +55,13 @@ body{
   width: 30%;
   margin-top: 1%;
 }
+
+.timer-btn-container{
+  width:100%;
+  display:flex;
+  justify-content: space-around;
+
+}
 .btncountainer{
     width: 100%;
     display: flex;

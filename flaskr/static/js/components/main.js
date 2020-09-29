@@ -5,7 +5,12 @@ let main = {
             password: undefined,
             last_time_entered: undefined,
             last_action: undefined,
-            time_called: false
+            time_called: false,
+            timer: undefined,
+            hourspan: undefined,
+            minspan: undefined,
+            secspan: undefined,
+            timeinterval: undefined,
         }       
         
     },
@@ -29,10 +34,19 @@ let main = {
                     <div class="smalltext">sec.</div>
                   </div>
                 </div>
-
-                <button type="button" class="btn btn-success">Start</button>
-                <button type="button" class="btn btn-light">Reset</button>
-                <button type="button" class="btn btn-danger">Stop</button> 
+               
+               <div class="settimer">
+                  
+               </div> 
+               <div class="timer-btn-container"> 
+                  <button type="button" class="btn btn-success"
+                  @click="startclock(q)"
+                  >Start</button>
+                  <button type="button" class="btn btn-danger"
+                  @click="stopclock()"
+                  >Stop</button>
+                </div>
+                 
             </div>
             
             <div class="btncountainer">
@@ -207,7 +221,54 @@ let main = {
             .catch(function(err) {
                 console.info(err + " url: " + url);
             });
+        },
+        
+        getTimeRemaining: function(endtime){
+          const total = Date.parse(endtime) - Date.parse(new Date());
+          const minutes = Math.floor((total / 1000 / 60) % 60);
+          const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+          const secs = Math.floor((total / 1000) % 60);
+          
+          return{
+            total,
+            secs,
+            minutes,
+            hours,
+          };
+        },
+        updateClock: function(endtime) {
+          const t = this.getTimeRemaining(endtime);
+          this.hourspan.innerHTML = ('0' + t.hours).slice(-2);
+          this.minspan.innerHTML = ('0' + t.minutes).slice(-2);
+          this.secspan.innerHTML = ('0' + t.secs).slice(-2);
+          if (t.total <= 0) {
+              if (this.timeinterval !== undefined) {
+                clearInterval(this.timeinterval);
+              }
+          }
+        },
+        initializeClock: function(){
+            this.timer = document.getElementsByClassName("timer-inner")[0];
+            this.hourspan = this.timer.querySelector('.hours');
+            this.minspan = this.timer.querySelector('.minutes');
+            this.secspan = this.timer.querySelector('.seconds');
+        },
+        startclock: function(endtime){
+            console.log(endtime);
+            console.log(this.timeinterval);
+            this.updateClock(endtime);
+            this.timeinterval = setInterval(this.updateClock, 1000, endtime);
+        },
+        stopclock: function(){
+            if (this.timeinterval !== undefined) {
+                clearInterval(this.timeinterval);
+            }
         }
+      },
+    mounted(){
+        this.q = new Date(Date.parse(new Date()) + 0.1 * 60 * 60 * 1000);
+        this.initializeClock()
+        this.startclock(this.q);
     },
     created: async function() {
         document.addEventListener('beforeunload', this.unload_handler)
