@@ -28,7 +28,7 @@ Scheduler for each weak, with todo effect! Each sunday i will make my weakly sch
    ```
 ## What do we need?
     * Backend: Python
-        * Database: Sqlite3 (because it is just a file, dont need a running server to drive it)
+        * Database: Sqlite3
             * Learn how to work Sqllite3
             * Setup the tables so we have one todo at each row, with date, and timetocomplete
             * Manipulate data by date, so if todoes have same date, then we group them togerher in a list
