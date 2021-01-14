@@ -11,6 +11,8 @@ let main = {
             minspan: undefined,
             secspan: undefined,
             timeinterval: undefined,
+            timeToBreak: 2,
+            breakAudio: new Audio('../../alert.mp3')
         }       
         
     },
@@ -46,6 +48,9 @@ let main = {
                   @click="stopclock()"
                   >Stop</button>
                 </div>
+                <button type="button" class="btn btn-warning resetbtn"
+                @click="resetTimer()"
+                >Reset</button>
                  
             </div>
             
@@ -259,6 +264,15 @@ let main = {
             this.updateClock(endtime);
             this.timeinterval = setInterval(this.updateClock, 1000, endtime);
         },
+        resetTimer: function() {
+            // this.breakAudio.play()
+            this.stopclock()
+            clearInterval(this.timeinterval)
+            this.q = new Date(Date.parse(new Date()) + this.timeToBreak * 60 * 60 * 1000);
+            this.hourspan.innerHTML = '00';
+            this.minspan.innerHTML = '00';
+            this.secspan.innerHTML = '00';
+        },
         stopclock: function(){
             if (this.timeinterval !== undefined) {
                 clearInterval(this.timeinterval);
@@ -266,7 +280,7 @@ let main = {
         }
       },
     mounted(){
-        this.q = new Date(Date.parse(new Date()) + 0.1 * 60 * 60 * 1000);
+        this.q = new Date(Date.parse(new Date()) + this.timeToBreak * 60 * 60 * 1000);
         this.initializeClock()
         this.startclock(this.q);
     },

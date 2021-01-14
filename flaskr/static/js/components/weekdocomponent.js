@@ -14,7 +14,7 @@ Vue.component("week-do", {
             already_adding: false,
             show_delete_button: false,
             time: null,
-            newtodo: null
+            newtodo: null,
         }
     },
     methods: {
