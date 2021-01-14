@@ -282,7 +282,7 @@ let main = {
     mounted(){
         this.q = new Date(Date.parse(new Date()) + this.timeToBreak * 60 * 60 * 1000);
         this.initializeClock()
-        this.startclock(this.q);
+        //this.startclock(this.q);
     },
     created: async function() {
         document.addEventListener('beforeunload', this.unload_handler)
